@@ -1,0 +1,49 @@
+{% extends "base.html" %}                       <!-- By using this you can overwrite anything created on base.html-->
+{% block title%} About {% endblock %}
+
+
+{% block content %}
+<!-- POST sends a post request to the server that means that it contains information that it wants to deliver to the website-->
+<head>
+    <style>
+        body {
+          background-color: rgb(245, 255, 250);
+        }
+        p.borderbottom {
+          border-bottom: 4px solid grey;
+          /* background-color: lightgrey; */
+        }
+        .p3 {
+          font-family: "Lucida Console", "Courier New", monospace;}
+    </style>
+</head>
+
+
+<div class="jumbotran text-left">
+    <h1>
+        <strong><p class="borderbottom">About</p></strong>
+    </h1>
+    <p class="p3">
+        Our project is an exciting journey in developing an On-Board Diagnostics 2 (OBD2) system from scratch. With a passion for automotive technology, 
+        we've embarked on this endeavor to create a robust OBD2 solution that provides valuable insights into your vehicle's performance.     
+    </p>
+</div>
+
+<h3><strong>Key features</strong></h3>
+<p class="p3">
+    <strong>Ground-Up Development</strong>
+    <br>    
+        Our OBD2 system is built from the ground up, showcasing our commitment to innovation and excellence in automotive diagnostics.
+    </br>
+    <br></br>
+    <strong>MCP2515 CAN-Controller</strong>
+    <br>
+        Utilizing the perks of the MCP2515, we ensure accurate and reliable communication with the vehicle's onboard system.
+    </br>
+    <br></br>
+    <strong>MCP2551 CAN-Transceiver</strong>
+    <br>
+        The MCP2551 is a High-Speed CAN-Transceiver that serves as the interface between a CAN protocol controller and the pysical bys. This component is fully compatible with the ISO-11898 standard.
+    </br>
+</p>
+{% endblock %}

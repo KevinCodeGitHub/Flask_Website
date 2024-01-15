@@ -1,0 +1,1 @@
+//Javascripts, CSS, files or images. Things that are static, that dont change are put in this folder

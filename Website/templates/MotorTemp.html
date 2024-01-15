@@ -1,0 +1,70 @@
+<!-- {% extends "base.html" %}  
+{% block content %} -->
+<head>
+    <title>Continuous Update Demo</title>
+    <!-- Pull in jQuery from Google-->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  </head>
+  
+  <div class="jumbotron text-center">
+    <h1><strong>Motor Temperature Values History</strong></h1>
+    <h4><p>This table illustrates the Motor Temperature values captured by the OBD system</p></h4>
+  </div>
+  
+  <div class="col-sm-10 ml-auto mr-auto">
+    <h3>Table of values</h3>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Motor Temp (°C)</th>
+              </tr>
+        </thead>
+        <tbody id="tableBody">
+            {% for i in thingdata['feeds'] %}
+                <tr>
+                    <td>{{ i['created_at'] }}</td>
+                    <td>{{ i['field2'] }}</td> 
+                </tr>
+            {% endfor %}
+  
+            {% for entry in entries %}
+                    <tr> 
+                        <td>{{entry.date}}</td>
+                        <td>{{ entry.field2 }}</td>
+                        <td><a href= "{{ url_for('auth.delete', entry_id = entry.id) }}" class="btn btn-outline-danger btn-sm">Delete</a></td>
+                    </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+  </div>
+  
+  <script type="text/javascript">
+    function updateTable(result) {
+        console.log("DEBUG: Received " + result['field1'] + result['field2']);
+        var newRow = "<tr>" +
+            "<td>" + result['created_at'] + "</td>" + 
+            "<td>" + result['field2'] + "</td>" +
+            "</tr>";
+        $("#tableBody").append(newRow);
+    }
+  
+    function requestUpdate() {
+        console.log("DEBUG: requesting update");
+  
+        $.getJSON('{{ url_for("auth.all_data") }}', function (result) {
+            updateTable(result);
+        });
+    }
+  
+    $(document).ready(function () {
+        console.log("DEBUG: document ready");
+        // Get the first element for the list
+        requestUpdate();
+        // Ensure the list is updated every 3s
+        setInterval(requestUpdate, 10000);
+    });
+    
+  </script>
+  <!-- {% endblock %} -->
+  

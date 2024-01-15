@@ -1,0 +1,137 @@
+{% extends "base.html" %}  <!-- By using this you can overwrite anything created on base.html-->
+{% block title%}Home{% endblock %}
+
+<!-- Mha den  här kan vi ändra texten på Home page-->
+{% block content %}
+
+<head>
+    <style>
+    p.dotted {border-style: dotted;}
+    p.double {border-style: double;}
+    .p3 { font-family: "Lucida Console", "Courier New", monospace;}
+    
+    p.borderbottom {
+      border-bottom: 4px solid grey;
+      /* background-color: lightgrey; */
+    }
+
+    body {
+      background-color: rgb(245, 255, 250);
+    }
+
+    .container {
+      position: static;
+    }
+    .center {
+      position: absolute;
+      top: 30%;
+      width: 85%;
+      text-align: center;
+      font-size: 18px;
+     }
+
+    .middle {
+      position: absolute;
+      top: 70%;
+      width: 85%;
+      text-align: center;
+      font-size: 18px;
+     } 
+    
+    .bottomleft {
+      position: absolute;
+      bottom: 8px;
+      left: 16px;
+      font-size: 18px;
+    }
+
+    .bottomright {
+      position: absolute;
+      bottom: 8px;
+      right: 16px;
+      font-size: 18px;
+      }
+    
+    img { 
+      width: 100%;
+      height: auto;
+      opacity: 1;
+    }
+    </style>
+    </head>
+
+<div class="jumbotran text-center">
+    <h1>
+        <strong>
+    <p class="borderbottom">
+    
+        Welcome to the OBD2-data display server
+    
+    </p>
+</strong>
+</h1>
+<p class="double">
+    
+    
+        This server hosts OBD2 data compiled from both a simulator and real data obtained from a vehicle using the MCP2515 CAN Controller and the MCP2551 CAN Transceiver. 
+        <br>
+        Specific parameters are organized on different tabs, or you can view a comprehensive display of all values under the 'All OBD2 Values' section.
+        </br>
+    
+</p>
+</div>
+    
+<body>
+
+<div class="container">
+    <div class="bottomleft"><img src="{{ url_for('static', filename='flask-logo.png') }}" class="image" />
+    
+    </div>
+    <!-- CSS styling to force images to be of same size. Optional. -->
+    <style>
+    .image {
+        width: 200px;
+    }
+    </style>
+</div>
+
+<div class="container">
+    <div class="bottomright"><img src="{{ url_for('static', filename='thing.png') }}" class="image" />
+    
+    </div>
+    <!-- CSS styling to force images to be of same size. Optional. -->
+    <style>
+    .image {
+        width: 200px;
+    }
+    </style>
+</div>
+
+<div class="container">
+    <div class="center"><img src="{{ url_for('static', filename='IMG_4090.jpg') }}" class="image" />
+    
+    </div>
+    <!-- CSS styling to force images to be of same size. Optional. -->
+    <style>
+    .image {
+        width: 200px;
+    }
+    </style>
+</div>
+
+<div class="container">
+  <div class="middle"><img src="{{ url_for('static', filename='uu.png') }}" class="image" />
+  
+  </div>
+  <!-- CSS styling to force images to be of same size. Optional. -->
+  <style>
+  .image {
+      width: 200px;
+  }
+  </style>
+
+</ul>
+</body>
+{% endblock %}
+
+       
